@@ -27,16 +27,36 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <style>
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button1 {border-radius: 2px;}
+    .button2 {border-radius: 4px;}
+    .button3 {border-radius: 8px;}
+    .button4 {border-radius: 12px;}
+    .button5 {border-radius: 50%;}
+    </style>
   </head>
     <body>
       <section id="intro">
         <div class="container">
           <div class="row"> 
             <div class="col-md-6 text-center"><br><br>
-              <a href="ita.html"><button><img src="pizza.png" style="width:150px;height:150px;border-radius: 60px"></button></a>
+              <a href="ita.html"><button class="button button5"><img src="pizza.png" style="width:150px;height:150px"></button></a>
             </div>
             <div class="col-md-6 text-center"><br><br>
-              <a href="ita.html"><button><img src="fondue.png" style="width:150px;height:150px;border-radius: 60px"></button></a>
+              <a href="ita.html"><button class="button button5"><img src="fondue.png" style="width:150px;height:150px"></button></a>
             </div>
           </div>
         </div>
