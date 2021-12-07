@@ -208,13 +208,13 @@ $(document).ready(function () {
 
 
     /********************** RSVP **********************/
-    /*$('#rsvp-form').on('submit', function (e) {
+    $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
 
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un momento!</strong> Stiamo salvando i dettagli.'));
         
-        $.post('https://script.google.com/macros/s/AKfycbwGLHdrIM5msjGoND1hQ8tZlxa30SAD0K_gjcr2tkHsitszjD76z7ZEvIpd5TSuSgzX/exec', data)
+        $.post('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', data)
             .done(function (data) {
                 console.log(data);
                 if (data.result === "error") {
@@ -228,7 +228,7 @@ $(document).ready(function () {
                 console.log(data);
                 $('#alert-wrapper').html(alert_markup('danger', '<strong>Mi spiace!</strong> Ci deve essere un problema col server. '));
             });
-    });*/
+    });
 
 });
 
