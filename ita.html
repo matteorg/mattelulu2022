@@ -329,8 +329,10 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3> Conferma la tua presenza!</h3>
-                <p>Ti saremmo grati se ci facessi sapere prima del 30 Aprile!</p>
-                <form id="rsvp-form" class="rsvp-form" onsubmit="return PostMessage()">
+                <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
+                <form id="rsvp-form" class="rsvp-form"
+                      action = "'https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec'"
+                      method = "POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
@@ -376,11 +378,11 @@
                 <div style="display: none;" id="thankyou_message">
                     <h2> <em>Grazie per la conferma!</em></h2>
                 </div>
-                <script>
+                <!--script>
                     function PostMessage() {
                         var form = document.getElementById('rsvp-form')
 
-                        fetch('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
+                        fetch(, {
                         method: 'POST'
                           }).then(function(res){ return res.json(); })
                             .then(function(data){
@@ -390,7 +392,7 @@
                         });
                      return false;
                   }
-                </script>
+                </script-->
             </div>
         </div>
         <!--div class="col-md-6">
