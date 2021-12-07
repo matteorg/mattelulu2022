@@ -39,19 +39,19 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"></script>
     <script>
-    function SubForm (){
-        $.ajax({
-            url:'https://api.apispreadsheets.com/data/21087/',
-            type:'post',
-            data:$("#rsvp-form").serializeArray(),
-            success: function(){
-              alert("Form Data Submitted :)")
-            },
-            error: function(){
-              alert("There was an error :(")
-            }
-        });
-    }
+        function SubForm (){
+            $.ajax({
+                url:'https://api.apispreadsheets.com/data/21087/',
+                type:'post',
+                data:$("#rsvp-form").serializeArray(),
+                success: function(){
+                  alert("Form Data Submitted :)")
+                },
+                error: function(){
+                  alert("There was an error :(")
+                }
+            });
+        }
     </script>
 </head>
 <body id="top">
@@ -328,7 +328,7 @@
 
 <section class="rsvp text-center" id="rsvp">
 
-    <!--div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -341,8 +341,8 @@
                     </div>
                 </div>
             </div><!-- /.modal-content -->
-        <!--/div><!-- /.modal-dialog -->
-    <!--/div><!-- /.modal -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <div class="container">
         <div class="row">
@@ -388,7 +388,7 @@
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn" onclick="SubForm()">
+                    <button onclick="SubForm()" class="btn-fill rsvp-btn">
                         Confermo!!
                     </button>
                 </form>
