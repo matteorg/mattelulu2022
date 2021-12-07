@@ -329,7 +329,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3> Conferma la tua presenza!</h3>
-                <p>Ti saremmo grati se ci facessi sapere prima del 30 Aprile!</p>
+                <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
                 <form id="rsvp-form" class="rsvp-form" onsubmit="return postMessage()">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
@@ -372,18 +372,16 @@
                     <button class="btn-fill rsvp-btn">
                         Certo che vengo!
                     </button>
-                    <p id="response_message"></p>
                 </form>
                 <div style="display: none;" id="thankyou_message">
-                <h2> <em>Grazie per la tua risposta!</em>xfn</h2>
+                <h2> <em>Grazie per la tua risposta!</em></h2>
                 </div>
                 <script>
                     function PostMessage() {
                         var form = document.getElementById('gform')
 
                         fetch('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
-                        method: 'POST',
-                        body: new URLSearchParams(new FormData(a)).toString()
+                        method: 'POST'
                      }).then(function(res){ return res.json(); })
                     .then(function(data){
                         if(data.result == "success") {
