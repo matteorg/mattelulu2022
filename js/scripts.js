@@ -208,7 +208,7 @@ $(document).ready(function () {
 
 
     /********************** RSVP **********************/
-    $('#rsvp-form').on('submit', function (e) {
+    /*$('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
 
@@ -228,7 +228,7 @@ $(document).ready(function () {
                 console.log(data);
                 $('#alert-wrapper').html(alert_markup('danger', '<strong>Mi spiace!</strong> Ci deve essere un problema col server. '));
             });
-    });
+    });*/
 
 });
 
