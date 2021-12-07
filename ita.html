@@ -34,25 +34,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="https://kit.fontawesome.com/6d4911635e.js" crossorigin="anonymous"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.js"
-      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-      crossorigin="anonymous"></script>
-    <script>
-        function SubForm(){
-            $.ajax({
-                url:'https://api.apispreadsheets.com/data/21087/',
-                type:'post',
-                data:$("#rsvp-form").serializeArray(),
-                success: function(){
-                  alert("Form Data Submitted :)")
-                },
-                error: function(){
-                  alert("There was an error :(")
-                }
-            });
-        }
-    </script>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -348,8 +329,10 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3> Conferma la tua presenza!</h3>
-                <p>Ti saremmo grati se ci facessi sapere prima del 30 Aprile!</p>
-                <form id="rsvp-form" class="rsvp-form">
+                <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
+                <form id="rsvp-form" class="rsvp-form"
+                      action="https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec"
+                      method="POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
@@ -388,7 +371,7 @@
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button onclick="SubForm()" class="btn-fill rsvp-btn">
+                    <button class="btn-fill rsvp-btn">
                         Confermo!!
                     </button>
                 </form>
