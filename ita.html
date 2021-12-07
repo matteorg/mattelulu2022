@@ -34,6 +34,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="https://kit.fontawesome.com/6d4911635e.js" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <script>
+    function SubForm (){
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/21087/',
+            type:'post',
+            data:$("#rsvp-form").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+            },
+            error: function(){
+              alert("There was an error :(")
+            }
+        });
+    }
+    </script>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -329,10 +348,8 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3> Conferma la tua presenza!</h3>
-                <p>Ti saremmo grati se ci facessi sapere prima del 30 Aprile!</p>
-                <form id="rsvp-form" class="rsvp-form"
-                      action = 'https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec'
-                      method = "POST">
+                <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
+                <form id="rsvp-form" class="rsvp-form">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
@@ -371,36 +388,12 @@
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn">
+                    <button class="btn-fill rsvp-btn" onclick="SubForm()">
                         Confermo!!
                     </button>
                 </form>
-                <div style="display: none;" id="thankyou_message">
-                    <h2> <em>Grazie per la conferma!</em></h2>
-                </div>
-                <!--script>
-                    function PostMessage() {
-                        var form = document.getElementById('rsvp-form')
-
-                        fetch(, {
-                        method: 'POST'
-                          }).then(function(res){ return res.json(); })
-                            .then(function(data){
-                            if(data.result == "success") {
-                                document.getElementById('thankyou_message').style.display = 'block';
-                            }
-                        });
-                     return false;
-                  }
-                </script-->
             </div>
         </div>
-        <!--div class="col-md-6">
-                            <h5>Matteo</h5>
-                            <p><i class="fa fa-mobile"></i> <a href="tel://+41786700791">+41 786700791</a></p>
-                            <h5>Lucia</h5>
-                            <p><i class="fa fa-mobile"></i> <a href="tel://+41763984118">+41 763984118</a></p>
-                        </div-->
     </div>
 </section>
     
