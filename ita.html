@@ -309,7 +309,7 @@
 
 <section class="rsvp text-center" id="rsvp">
 
-    <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+    <!--div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -322,8 +322,8 @@
                     </div>
                 </div>
             </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        <!--/div><!-- /.modal-dialog -->
+    <!--/div><!-- /.modal -->
 
     <div class="container">
         <div class="row">
@@ -380,7 +380,7 @@
                     function PostMessage() {
                         var form = document.getElementById('rsvp-form')
 
-                        fetch('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
+                        fetch('"https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
                         method: 'POST'
                      }).then(function(res){ return res.json(); })
                     .then(function(data){
