@@ -329,7 +329,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3> Conferma la tua presenza!</h3>
-                <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
+                <p>Ti saremmo grati se ci facessi sapere prima del 30 Aprile!</p>
                 <form id="rsvp-form" class="rsvp-form" onsubmit="return PostMessage()">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
@@ -380,14 +380,14 @@
                     function PostMessage() {
                         var form = document.getElementById('rsvp-form')
 
-                        fetch('"https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
+                        fetch('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', {
                         method: 'POST'
-                     }).then(function(res){ return res.json(); })
-                    .then(function(data){
-                        if(data.result == "success") {
-                            document.getElementById('thankyou_message').style.display = 'block';
-                        }
-                     });
+                          }).then(function(res){ return res.json(); })
+                            .then(function(data){
+                            if(data.result == "success") {
+                                document.getElementById('thankyou_message').style.display = 'block';
+                            }
+                        });
                      return false;
                   }
                 </script>
