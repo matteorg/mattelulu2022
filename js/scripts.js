@@ -208,10 +208,11 @@ $(document).ready(function () {
 
 
     /********************** RSVP **********************/
-    $('#rsvp-form').addEventListener("submit", function(e) {
+    const form = document.getElementById('rsvp-form');
+    form.addEventListener("submit", function(e) {
         e.preventDefault();
-        var data = $(this).serialize();
-
+        const data = new FormData(form);
+   
         $('#alert-wrapper').html(alert_markup('info', '<strong>Un momento!</strong> Stiamo salvando i dettagli.'));
         
         fetch('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec',{
