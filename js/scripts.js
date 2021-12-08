@@ -218,7 +218,7 @@ $(document).ready(function () {
             && !$('#nome').val().trim()) {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Il tuo nome non è valido'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6TC/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', data)
                 .done(function (data) {
                     console.log(data);
                     if (data.result === "error") {
