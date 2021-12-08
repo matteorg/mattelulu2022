@@ -208,31 +208,15 @@ $(document).ready(function () {
 
 
     /********************** RSVP **********************/
-    $('#rsvp-form').on('submit', function (e) {
-        e.preventDefault();
-        var data = $(this).serialize();
-
-        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-        if ($('#nome').val() !== null
-            && !$('#nome').val().trim()) {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Il tuo nome non è valido'));
-        } else {
-            $.post('https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec', data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
-                    } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
-                    }
-                })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
-                });
-        }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwqN5ZJwG2bunKiQZFpBbYz0rcRxWQDJVmK4sRjmY98jkqiUdSvb4DP9EA9nAC6Z4TC/exec'
+    const form = document.forms['rsvp-form']
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        var response_message = document.getElementById("response_message");
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => response_message.innerHTML = "Success!")
+          .catch(error => response_message.innerHTML = "Error!")
+          })
     });
 
 });
