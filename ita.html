@@ -353,7 +353,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fas-angellist"></i><select id="menu" name="Ci sarà?" onChange="checkOption(this)">
+                                <i class="fa fas-angellist"></i><select id="menu-rsvp" name="Ci sarà?" onChange="checkOption(this)">
                                     <option disabled selected value> Ci sarai? </option>
                                     <option value="A">Certo che vengo!</option>
                                     <option value="B"> &#128546; Purtroppo non riesco</option>
@@ -364,7 +364,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="part. e-mail" class=""
+                                <i class="fa fa-envelope"></i><input type="email" id="emailpart" name="e-mail" class=""
                                                                      placeholder="La tua email"
                                                                      required disabled>
                             </div>
@@ -380,7 +380,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="partecipanti" class="" min="0"
+                                <i class="fa fa-users"></i><input type="number" id="quantepers" name="partecipanti" class="" min="0"
                                                                   max="4"
                                                                   placeholder="Quanti siete?"
                                                                   required disabled>
@@ -388,7 +388,7 @@
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-laptop"></i><select id="options" name="opzione" size="0" disabled>
+                                <i class="fa fa-laptop"></i><select id="qualeopz" name="opzione" size="0" disabled>
                                     <option disabled selected value> Qual è il tuo piano? </option>
                                     <option value="self-planning">Mi organizzo da solo</option>
                                     <option value="proposta accettata"> &#128077; 2 notti in Hotel a Santa Cesarea</option>
@@ -441,11 +441,13 @@
 </footer>
 
 <script>
-    function checkOption(obj) {
-        if obj.value == "A" {
-            document.getElementsByName("part. e-mail").removeAttribute("disabled");
-            document.getElementsByName("opzione").removeAttribute("disabled");
-            document.getElementsByName("partecipanti").removeAttribute("disabled");
+    function checkOption() {
+    var ddl = document.getElementById("menu-rsvp")
+    var selectedValue = ddl.options[ddl.selectedIndex].value;
+        if (selectedValue == "A") {
+            document.getElementById("emailpart").disabled = false;
+            document.getElementById("qualeopz").disabled = false;
+            document.getElementById("quantepers").disabled = false;            
         }
     }
 </script>
