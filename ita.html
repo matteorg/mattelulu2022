@@ -346,13 +346,6 @@
                                           font-size:30px"> Conferma la tua presenza!</h3>
                 <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
             </div>
-            <script>
-                function checkOption(obj) {
-                    document.getElementsByName("email").disabled = !(obj.value == "A");
-                    document.getElementsByName("opzione").disabled = !(obj.value == "A");
-                    document.getElementsByName("partecipanti").disabled = !(obj.value == "A");
-                }
-            </script>
             <div class="col-md-6 col-md-offset-3">
                 <form id="rsvp-form" class="rsvp-form"
                       action=""
@@ -360,9 +353,9 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fas-angellist"></i><select id="menu" onChange="checkOption(this)">
+                                <i class="fa fas-angellist"></i><select id="menu" name="Ci sarà?" onChange="checkOption(this)">
                                     <option disabled selected value> Ci sarai? </option>
-                                    <option value="A">Certo!</option>
+                                    <option value="A">Certo che vengo!</option>
                                     <option value="B"> &#128546; Purtroppo non riesco</option>
                                 </select>
                             </div>
@@ -371,7 +364,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="email" class=""
+                                <i class="fa fa-envelope"></i><input type="email" name="part. e-mail" class=""
                                                                      placeholder="La tua email"
                                                                      required disabled>
                             </div>
@@ -447,6 +440,14 @@
     </div>
 </footer>
 
+<script>
+    function checkOption(obj) {
+        if obj.value == "A" {
+            document.getElementsByName("part. e-mail").removeAttribute("disabled");
+            document.getElementsByName("opzione").removeAttribute("disabled");
+            document.getElementsByName("partecipanti").removeAttribute("disabled");
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 <script src="js/jquery.fancybox.pack.js"></script>
