@@ -338,22 +338,35 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-12 text-center">
                 <h3 class="header" style="font-family:'Gloria Hallelujah', cursive;
                                           background: -webkit-linear-gradient(bottom, #cc9900 1%, #ffcc00 100%);
                                           -webkit-background-clip: text;
                                           -webkit-text-fill-color: transparent;
                                           font-size:30px"> Conferma la tua presenza!</h3>
                 <p>Ti saremmo grati se ci facessi sapere prima del 29 Aprile!</p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
                 <form id="rsvp-form" class="rsvp-form"
                       action=""
                       method="POST">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fas-angellist"></i><select id="menu" onChange="checkOption(this)">
+                                    <option disabled selected value> Ci sarai? </option>
+                                    <option value="A">Certo!</option>
+                                    <option value="B"> &#128546; Purtroppo non riesco</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-envelope"></i><input type="email" name="email" class=""
                                                                      placeholder="La tua email"
-                                                                     required>
+                                                                     required disabled>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
@@ -370,12 +383,12 @@
                                 <i class="fa fa-users"></i><input type="number" name="partecipanti" class="" min="0"
                                                                   max="4"
                                                                   placeholder="Quanti siete?"
-                                                                  required>
+                                                                  required disabled>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-laptop"></i><select id="options" name="opzione" size="0">
+                                <i class="fa fa-laptop"></i><select id="options" name="opzione" size="0" disabled>
                                     <option disabled selected value> Qual è il tuo piano? </option>
                                     <option value="self-planning">Mi organizzo da solo</option>
                                     <option value="proposta accettata"> &#128077; 2 notti in Hotel a Santa Cesarea</option>
@@ -387,7 +400,7 @@
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
-                        Confermo!!
+                        Rispondi
                     </button>
                 </form>
             </div>
@@ -439,6 +452,13 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPdeqzCp_QHi1BmsQM84XlpZb7wbih2-0&callback=initMap"></script>
 <!-- Google Analytics -->
+<script>
+    function checkOption(obj) {
+        document.getElementsByName("email").disabled = !(obj.value == "A");
+        document.getElementsByName("opzione").disabled = !(obj.value == "A");
+        document.getElementsByName("partecipanti").disabled = !(obj.value == "A")
+    }
+</script>
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
