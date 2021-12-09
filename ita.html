@@ -355,8 +355,8 @@
                             <div class="form-input-group">
                                 <i class="fa fas-angellist"></i><select id="menu-rsvp" name="Ci sarà?" onChange="checkOption(this)">
                                     <option disabled selected value> Ci sarai? </option>
-                                    <option value="A">Certo che vengo!</option>
-                                    <option value="B"> &#128546; Purtroppo non riesco</option>
+                                    <option value="Si">Certo che vengo!</option>
+                                    <option value="No"> &#128546; Purtroppo non riesco</option>
                                 </select>
                             </div>
                         </div>
@@ -444,7 +444,7 @@
     function checkOption() {
     var ddl = document.getElementById("menu-rsvp")
     var selectedValue = ddl.options[ddl.selectedIndex].value;
-        if (selectedValue == "A") {
+        if (selectedValue == "Si") {
             document.getElementById("emailpart").disabled = false;
             document.getElementById("qualeopz").disabled = false;
             document.getElementById("quantepers").disabled = false;            
