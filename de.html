@@ -34,6 +34,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="https://kit.fontawesome.com/6d4911635e.js" crossorigin="anonymous"></script>
+    <style>
+        .modal-dialog iframe{
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+    <script>
+    $(document).ready(function(){
+        /* Get iframe src attribute value i.e. YouTube video url
+        and store it in a variable */
+        var url = $("#dona-video").attr('src');
+
+        /* Assign empty url value to the iframe src attribute when
+        modal hide, which stop the video playing */
+        $("#gift-modal").on('hide.bs.modal', function(){
+            $("#dona-video").attr('src', '');
+        });
+
+        /* Assign the initially stored url back to the iframe src
+        attribute when modal is displayed again */
+        $("#gift-modal").on('show.bs.modal', function(){
+            $("#dona-video").attr('src', url);
+        });
+    });
+    </script>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -759,7 +784,7 @@
                     
                     <div class="col-md-4 col-md-offset-4 text-center">
                         <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#gift-modal">
-                            <i class="fas fa-money-check-alt"></i>&nbsp;&nbsp;ALTERNATIVE
+                            <i class="fas fa-money-check-alt"></i>&nbsp;&nbsp;REISEFONDS
                         </a>
                     </div>
                 <br><br><br>
@@ -775,45 +800,48 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
                     <h3 class="text-center section-padding" style="font-size:115%; text-align:center;">
-                        <i class="fas fa-gift"></i>Möchtet ihr unbedingt etwas schenken?
+                        <i class="fas fa-gift"></i>&nbsp;Wollt ihr wirklich ein Geschenk machen?
                     </h3>
-                    <h5 style="font-size:115%; text-align:center;"> Dann helft denjenigen, die es am nötigsten haben! </span></h5>
+                    <h5 style="font-size:115%; text-align:center;">Tragt zu unserem Reisefonds bei!</h5>
                     <p style="font-size:110%; text-align:center;">
-                        Wir machen hier einige Vorschläge:  <br>
-                        <strong>Amici a n-zampe</strong><br>
-                        Hai anche tu un amico a n-zampe? O semplicemente ami gli animali?<br>
-                        Sai che puoi aiutare a tutelare i loro diritti?<br>
-                        E perché no? Magari puoi pure dare a uno di loro una casa<br>
-                        proprio come abbiamo fatto noi con la nostra Leia!<br>
-                        <iframe width="380" height="240" src="https://www.youtube.com/embed/CReVyGHlm9I"></iframe><br>
-                        Oppure puoi semplicemente aiutare chi li aiuta <a class="btn btn-fill btn-pill"
+                        Wenn COVID es zulässt, würden wir gerne eine Hochzeitsreise organisieren. 
+			    Das Ziel ist noch unbekannt, aber wenn ihr möchtet, könnt ihr uns helfen,
+			    dieses Projekt zu realisieren, indem ihr hier einen Beitrag leistet::<br>
+                        <strong>CH44 0026 9269 1101 85M1 W</strong><br>
+                        <strong>Note: Hochzeitsreise Matteo und Lucia</strong><br><br>
+                        <img src="img/maludavos.jpeg" alt="mattelulubergen">
+                    </p>
+                    <!--h5 style="font-size:115%; text-align:center;"> Aiuta chi ha bisogno! </span></h5>
+                    <p style="font-size:110%; text-align:center;">
+                        Possiamo darti qualche consiglio, magari. <br>
+                        <strong>Amici a n-zampe</strong><br></p>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="dona-video" src="https://www.youtube.com/embed/CReVyGHlm9I" width="560" height="315"></iframe><br>
+                    </div>
+                    <p style="font-size:110%; text-align:center;">
+                        <br>Aiuta chi protegge gli animali <a class="btn btn-fill btn-pill"
                                href="https://www.oipa.org/italia/offerta/" target="_blank" rel="noopener noreferrer">
                         <i class="fa fa-donate"></i>&nbsp;&nbsp;QUI</a>
                     </p>
                     <p style="font-size:110%; text-align:center;">
-                        <strong>Action Aid</strong>
-                        <br>
-                        <iframe width="380" height="240" src="https://www.youtube.com/embed/TlQP9dwN-zc"></iframe><br>
-                        Informati <a class="btn btn-fill btn-pill"
+                        <strong> Action Aid </strong><br></p>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="dona-video" src="https://www.youtube.com/embed/TlQP9dwN-zc" width="560" height="315"></iframe><br>
+                    </div>
+                    <p style="font-size:110%; text-align:center;">
+                        <br>Informati <a class="btn btn-fill btn-pill"
                                href="https://www.actionaid.it/come-puoi-aiutarci/sostienici" target="_blank" rel="noopener noreferrer"><i
                                     class="fa fa-donate"></i>&nbsp;&nbsp;QUI</a>
-                    </p>
-                    <h5 style="font-size:115%; text-align:center;"> Preferisci altre associazioni? </h5>
-                    <p style="font-size:110%; text-align:center;">
-                        <a class="btn btn-fill btn-pill"
-                               href="https://it.wikipedia.org/wiki/ONG_(Italia)" target="_blank" rel="noopener noreferrer"><i
-                                    class="fa fa-clipboard-list"></i>&nbsp;&nbsp;Qui</a> trovi una lista di associazioni<br>
-                        ONG, da quelle medico-umanitarie a quelle per la difesa <br>
-                        dei diritti umani, alla tutela dell'ambiente ecc.<br>
-                        <strong> Scegli tu! </strong>
                     </p>
                     <h5 style="font-size:115%; text-align:center;"> Venire al matrimonio è già abbastanza costoso? </h5>
                     <p style="font-size:110%; text-align:center;">
                         <strong> Lo capiamo benissimo!</strong>
                         <br>
                         Ciononostante ci piacerebbe darti un ultimo consiglio:
-                        <iframe width="380" height="240" src="https://www.youtube.com/embed/OcGFBGY9_NA"></iframe>
                     </p>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="dona-video" src="https://www.youtube.com/embed/OcGFBGY9_NA" width="560" height="315"></iframe>
+                    </div-->
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
