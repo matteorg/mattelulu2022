@@ -9,7 +9,8 @@ _See [mattelulu.ch](http://www.mattelulu.ch/) for a demo. Use invite code `to-be
 4. __Add to Calendar__ feature which supports four different calendars.
 6. A nice __Youtube video__ showing the town of the weedding location.
 7. __Google Map__ showing your venue's location.
-8. Start and run the website (almost) __completely free__. No hosting, backend server, or database required as you can use
+8. __Password Protected__ homepage, so that you can give your personal access password to your guests
+9. Start and run the website (almost) __completely free__. No hosting, backend server, or database required as you can use
    [GitHub Pages](https://pages.github.com/) to host and Google sheets (with the help of Google scripts) to store response
    data.
 
