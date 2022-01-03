@@ -116,3 +116,195 @@ function formatMailBody(obj) { // function to spit out all the keys/values from 
 }
 ```
 
+After copying and pasting this code, and editing whatever is necessary for you, you should save it by clicking on the usual __save__ icon just above the code window. The next step is to set up the __trigger__. So just go the column menu to the left, click on __triggers__, then select __Add Trigger__ from the bottom right corner of the page.
+
+![Screen Shot 2022-01-03 at 10 44 07](https://user-images.githubusercontent.com/41672045/147917678-a367525f-5b5e-49b4-a305-18eff5470b59.png)
+
+Once the new modal tab is open, you can leave everything as it is, except __Select event type__. From the scroll down menu, select __On form submit__ and then __Save__.
+
+![Screen Shot 2022-01-03 at 10 54 06](https://user-images.githubusercontent.com/41672045/147917955-99cca4b7-2c9c-42f8-8899-959c381e9881.png)
+
+Once you have completed these steps, you are ready to __deploy__. Let's go back to the __editor__ and click __Deploy__ ---> __New Deployment__.
+
+![Screen Shot 2022-01-03 at 10 57 14](https://user-images.githubusercontent.com/41672045/147918190-344ceb70-3084-456a-8201-405c36a44b03.png)
+
+In the new pop-up window you need to specify the type of deployment. Click on the icon and select __Web App__.
+
+![Screen Shot 2022-01-03 at 11 00 22](https://user-images.githubusercontent.com/41672045/147918353-fdc915a7-d915-470c-a6d2-f308198bebb4.png)
+
+When asked to add a description, just write whatever you like. If you are connected to your Google Account, the __execute as__ should already display your email address. Finally you can choose the level of access according to your taste.
+
+![Screen Shot 2022-01-03 at 11 02 52](https://user-images.githubusercontent.com/41672045/147918554-d8a64c29-c845-406c-aa93-4fea0cdfcc03.png)
+
+You can finally click on __Deploy__. You may be asked to authorize access, so just click on __authorize access__ and sign in with your account, then deployment will proceed. You finally obtained the __web app link__ that you'll need to obtain a custumized email and fill a google sheet.
+
+Your next step is to copy this link and go to __js__ scripts folder on your project and in your __script.js__ file paste the link in the following block:
+
+```JavaScript
+/********************** RSVP **********************/
+ $('#rsvp-form').on('submit', function (e) {
+     e.preventDefault();
+     var data = $(this).serialize();
+
+     $('#alert-wrapper').html(alert_markup('info', '<strong>Un momento!</strong> Stiamo salvando i tuoi dettagli.'));
+
+     if "No"===$("#menu-rsvp").val() {
+         $.post('https://script.google.com/macros/s/your_link_part/exec', data)
+             .done(function (data) {
+                 console.log(data);
+                 if (data.result === "error") {
+                     $('#alert-wrapper').html(alert_markup('danger', data.message));
+                 } else {
+                     $('#alert-wrapper').html('');
+                     $('#rsvp-nocome').modal('show');
+                 }
+             })
+     } else {
+         $.post('https://script.google.com/macros/s/your_link_part/exec', data)
+             .done(function (data) {
+                 console.log(data);
+                 if (data.result === "error") {
+                     $('#alert-wrapper').html(alert_markup('danger', data.message));
+                 } else {
+                     $('#alert-wrapper').html('');
+                     $('#rsvp-modal').modal('show');
+                 }
+             })
+             .fail(function (data) {
+                 console.log(data);
+                 $('#alert-wrapper').html(alert_markup('danger', "<strong>Mi spiace!</strong> C'è un problema col server. "));
+             });
+     }
+ });
+```
+
+Now, whenever someone submits the form, the Google Sheet will be filled with the info you want, and you'll get a nice, customized email :)
+
+## Important remark on column names
+
+The set up above is 95% of what you need. What you need to be careful with is also column names setup. When writing the form (here is the code from the file __ita.html__) make sure that the __name__ tag has exactly the same name of the relative column in the google spreadsheet.
+In my case, the column names are __timestamp, Ci sarà?, e-mail, nome, partecipanti, opzione__, and as you can see, they exaclty match the names in the code below.
+
+```JavaScript
+<form id="rsvp-form" class="rsvp-form"
+       action=""
+       method="POST">
+     <div class="row">
+         <div class="col-md-12 col-sm-12">
+             <div class="form-input-group">
+                 <i class="fa fa-angellist"></i><select id="menu-rsvp" name="Ci sarà?" onChange="checkOption(this)" required>
+                     <option disabled selected value> Ci sarai? </option>
+                     <option value="Si">Certo che vengo!</option>
+                     <option value="No"> &#128546; Purtroppo non riesco</option>
+                 </select>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-6 col-sm-6">
+             <div class="form-input-group">
+                 <i class="fa fa-envelope"></i><input type="email" id="emailpart" name="e-mail" class=""
+                                                      placeholder="La tua email"
+                                                      required disabled>
+             </div>
+         </div>
+         <div class="col-md-6 col-sm-6">
+             <div class="form-input-group">
+                 <i class="fa fa-user"></i><input name="nome" class=""
+                                                  placeholder="Il tuo nome"
+                                                  required>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-6 col-sm-6">
+             <div class="form-input-group">
+                 <i class="fa fa-users"></i><input type="number" id="quantepers" name="partecipanti" class="" min="0"
+                                                   max="4"
+                                                   placeholder="Quanti siete?"
+                                                   required disabled>
+             </div>
+         </div>
+         <div class="col-md-6 col-sm-6">
+             <div class="form-input-group">
+                 <i class="fa fa-laptop"></i><select id="qualeopz" name="opzione" size="0" disabled>
+                     <option disabled selected value> Qual è il tuo piano? </option>
+                     <option value="self-planning"> Mi organizzo da solo </option>
+                     <option value="proposta accettata"> &#128077; 2 notti in Hotel a Santa Cesarea</option>
+                 </select>
+             </div>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-md-12" id="alert-wrapper"></div>
+     </div>
+     <button class="btn-fill rsvp-btn">
+         Rispondi
+     </button>
+ </form>
+```
+
+# Add to calendar
+
+There are only few changes that you have to implement for the __add to calendar__ feature. First, in your json script, just adjust the following block with the information specific to __your__ wedding:
+
+```
+/********************** Add to Calendar **********************/
+ var myCalendar = createCalendar({
+     options: {
+         class: '',
+         // You can pass an ID. If you don't, one will be generated for you
+         id: ''
+     },
+     data: {
+         // Event title
+         title: "Matrimonio Matte e Lulu",
+
+         // Event start date
+         start: new Date('Lug 3, 2022 17:00'),
+
+         // Event duration (IN MINUTES)
+         // duration: 120,
+
+         // You can also choose to set an end time
+         // If an end time is set, this will take precedence over duration
+         end: new Date('Lug 4, 2022 03:00'),
+
+         // Event Address
+         address: 'Cala dei Balcani, Santa Cesarea Terme',
+
+         // Event Description
+         description: "Non vediamo l'ora di avervi al nostro grande giorno!. Se avete domande, non esitate a contattarci!"
+     }
+ });
+
+ $('#add-to-cal').html(myCalendar);
+```
+
+Next you should just custumize the following piece of code in the calendar json file in the __json__--->__vendor__ folder:
+
+```
+var generateMarkup = function(calendars, clazz, calendarId) {
+     var result = document.createElement('div');
+
+     result.innerHTML = '<label id="add-to-calendar-label" for="checkbox-for-' +
+         calendarId + '" class="btn btn-fill btn-small"><i class="fa fa-calendar"></i>&nbsp;&nbsp; Aggiungi al calendario</label>';
+     result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
+
+     Object.keys(calendars).forEach(function(services) {
+         result.innerHTML += calendars[services];
+     });
+
+     result.className = 'add-to-calendar';
+     if (clazz !== undefined) {
+         result.className += (' ' + clazz);
+     }
+
+     addCSS();
+
+     result.id = calendarId;
+     return result;
+ };
+```
+
+The rest of the code was developed by the amazing [rampatra](https://github.com/rampatra), so you can always refer to his github page for more details.
