@@ -28,13 +28,13 @@ _See [mattelulu.ch](http://www.mattelulu.ch/) for a demo. Use invite code `to-be
 
 If you want the responses to be stored in an Excel-like file, you can simply use __Google Sheets__.
 
-First, start a new tab and open [Google Sheets](https://docs.google.com/spreadsheets/u/0/?tgif=d). The start a new blank sheet.
+First, start a new tab and open [Google Sheets](https://docs.google.com/spreadsheets/u/0/?tgif=d). The start a new blank sheet. Maybe you want to give a name to the sheet, otherwise it will remain __Untitled spreadsheet__.
 
 When you're on the new sheet, you can go to __Extensions__--->__App Scripts__
 
 ![Screen Shot 2022-01-03 at 10 24 22](https://user-images.githubusercontent.com/41672045/147915709-1009fcce-887c-4495-8cbd-8ea15866b8cf.png)
 
-Once the new page is open, the __Code.gs__ window should be automatically open. There, you can replace the existing code with the following.
+Once the new page is open, the __Code.gs__ window should be automatically open. There, you can replace the existing code with the following, where you have to type at the beginning your email address, so that you receive an email alert when someone fills the form. You should also edit the sheet name if you rename yours from __Sheet 1__ to whatever you like. Here you can also define the subject of the email (in whatever language suits you best).
 
 ```JavaScript
 var TO_ADDRESS = "youremailaddress"; // email to send the form data to
@@ -78,7 +78,7 @@ function record_data(e) {
   Logger.log(JSON.stringify(e)); // log the POST data in case we need to debug it
   try {
     var doc     = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet   = doc.getSheetByName('responses'); // select the responses sheet
+    var sheet   = doc.getSheetByName('Sheet1'); // select the responses sheet, change name if you change sheet name
     var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     var nextRow = sheet.getLastRow()+1; // get next row
     var row     = [ new Date().toUTCString() ]; // first element in the row should always be a timestamp
