@@ -14,9 +14,10 @@ _See [mattelulu.ch](http://www.mattelulu.ch/) for a demo. Use invite code `to-be
 6. A nice __Youtube video__ showing the town of the weedding location.
 7. __Google Map__ showing your venue's location.
 8. __Password Protected__ homepage, so that you can give your personal access password to your guests
-9. Start and run the website (almost) __completely free__. No hosting, backend server, or database required as you can use
+9. Start and run the website __completely free__. No hosting, backend server, or database required as you can use
    [GitHub Pages](https://pages.github.com/) to host and Google sheets (with the help of Google scripts) to store response
    data.
+10. Add __custom domain__ and increase the overall cost of your website to around 12$ per year.
 
 # Getting Started
 1. `$ cd wedding-website` - go inside the project directory
@@ -248,7 +249,7 @@ In my case, the column names are __timestamp, Ci sarà?, e-mail, nome, partecipa
 
 There are only few changes that you have to implement for the __add to calendar__ feature. First, in your json script, just adjust the following block with the information specific to __your__ wedding:
 
-```
+```JavaScript
 /********************** Add to Calendar **********************/
  var myCalendar = createCalendar({
      options: {
@@ -283,7 +284,7 @@ There are only few changes that you have to implement for the __add to calendar_
 
 Next you should just custumize the following piece of code in the calendar json file in the __json__--->__vendor__ folder:
 
-```
+```JavaScript
 var generateMarkup = function(calendars, clazz, calendarId) {
      var result = document.createElement('div');
 
@@ -308,3 +309,22 @@ var generateMarkup = function(calendars, clazz, calendarId) {
 ```
 
 The rest of the code was developed by the amazing [rampatra](https://github.com/rampatra), so you can always refer to his github page for more details.
+
+# Google Maps
+
+In order to display a nice map from Google Maps you need an API. Start by going to __Google Cloud__ by clicking [here](https://cloud.google.com/gcp), then click on __go to console__.
+
+Once you are redirected to the __Google Cloud Platform__ you'll first be asked to agree to the terms. Just do it and you'll be in the home page.
+
+Apparently, once upon a time creating Google Maps APIs was free. Now you should activate a billing account. __NO WORRIES__: you'll get your API for free. I just neet to tell you the whole story.
+
+Once you activate a Google Cloud billing account, you get a credit of 300$ for 90 days. After this trial period, you get charged for the usage that exceeds the monthly limits which you can find [here](https://cloud.google.com/free/docs/gcp-free-tier?authuser=1#free-tier-usage-limits). __Trust me__, if you use the API for something as small as a project like this, you'll __never__ exceed the usage limit. __Furthermore__, Google Maps Platform (which is what we're using) features a recurring 200$ monthly credit. You can read by yourself the [Pricing for Maps, Routes, and Places](https://mapsplatform.google.com/pricing/?authuser=1).
+
+So, if you are now convinced, you can click on the top-right corner of the page on __activate__.
+
+![Screen Shot 2022-01-03 at 11 45 46](https://user-images.githubusercontent.com/41672045/147922084-943b2702-6d77-4044-8ece-761ee11d8d22.png)
+
+Follow the required steps (including giving credit card details) and finally click on __start free trial__.
+
+If everything went successfully, the administration will display a message with the title __Enable Google Maps Platform__ to activate the API key. Click the __Next__ button. Generating process — you will find your new API key in the grey box. Click __Done__ to finish the process.
+
