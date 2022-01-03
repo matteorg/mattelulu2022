@@ -328,3 +328,77 @@ Follow the required steps (including giving credit card details) and finally cli
 
 If everything went successfully, the administration will display a message with the title __Enable Google Maps Platform__ to activate the API key. Click the __Next__ button. Generating process — you will find your new API key in the grey box. Click __Done__ to finish the process.
 
+The key is generated, but you now need to specify some settings before you can start using Maps on your website.
+
+### Settings
+
+You need to set some security settings to begin with. So go to the left column menu, select __APIs and services__ and then click on __credentials__.
+
+![Screen Shot 2022-01-03 at 11 56 14](https://user-images.githubusercontent.com/41672045/147923059-67e2f174-539d-4651-9b6a-ca43c9ad154d.png)
+
+Once you are there, select the only API which should appear there, and select the pencil icon to edit the security settings of the API.
+
+![Screen Shot 2022-01-03 at 11 55 03](https://user-images.githubusercontent.com/41672045/147923287-81ebb06a-5b72-495c-9e07-60a7b8634d3c.png)
+
+When you are finally there, scroll down to the __Application restrictions__ section and select __HTTP referrers__. Just below, in the __Website restrictions__ just add all the items that you wish. In my case I decided to restrict access only to the wedding web pages in Italian and German. You can learn more on how to restrict websites by reading the column to the right (it's also in the picture below).
+
+![Screen Shot 2022-01-03 at 11 59 09](https://user-images.githubusercontent.com/41672045/147923523-5631d19d-bc79-46d3-bcfa-fc7c6a33cb55.png)
+
+Once these settings have been specified, just click on __save__. In the __credential__ page you can copy your API key (it's just next to the pencil icon you had to click before, once you edited the security settings) and store it, as you'll need in the next steps.
+
+Once a month you'll get an invoice from Google amounting to plausibly 0$. You can easily check your API usage and your billing account from the home page of Google Cloud Platform. Now we can move back to the wedding website.
+
+### Displaying maps on website
+
+In the json scripts, you can just edit the following block with the coordinates of the place you'd like to be displayed. The coordinates are simple to recover. Once you select the place you want on Google Maps, the navigation bar will automatically include the coordinates. For example <https://www.google.com/maps/place/Cala+dei+Balcani/@40.0365908,18.4557733,17z/data=!3m1!4b1!4m5!3m4!1s0x13446b68dc0aae1f:0x712bcadc0421810a!8m2!3d40.0366714!4d18.4578939> this is the link to the location of our wedding, and as you can see, after the name theres __40.0365908,18.4557733__. These are exactly the latitude and longitude that you need :)
+
+```
+function initMap() {
+    var location = {lat: 40.0365867, lng: 18.457962};
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 15,
+        center: location,
+        scrollwheel: false
+    });
+
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+}
+```
+
+Finally, just go the html file where you want your map to be displayed, and at the end of the page, where you have the scripts, just add the following and replace __yourAPIkey__ with the key that your generated and stored in the steps above:
+
+```
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=yourAPIkey&callback=initMap"></script>
+```
+
+There you go, your map will appear on your website :)
+
+# Password protected page
+
+This is an easy step, in case you are interesting in password protecting your homepage. You can just go to [this page](https://robinmoisson.github.io/staticrypt/) and paste the whole html code of your website in the html box, and set the password that you prefer. Finally generated your encrypted and password protected html and reload it to github with the correct name. The webpage will look like this:
+
+![Screen Shot 2022-01-03 at 12 19 44](https://user-images.githubusercontent.com/41672045/147924899-e8d929cb-48aa-4cf4-b031-332abc220075.png)
+
+You can customize the html file to display the message that you prefer (like I did with the double option Italian/German).
+
+# Custom domain
+
+To publish your website you can simply use [GitHub Pages](https://pages.github.com/). Once everything you want to publish is ready, you can go to __settings__ and in the left column menu __pages__. There you can either decide to publish the website __for free__, with the github domain.
+
+If you are instead willing to spend around 1 dollar/euro/chf per month to have a nicer domain name, you can just buy one. Buying a domain name is incredibly easy and quite quick (it may take up to 48 hours; in my case I had to wait aroun 15 hours after the purchase). Just google __buy domain__ and you'll find a ton of possible websites where you can purchase custom domains for very cheap fees. Google itself gives the possibility to buy custom domains (unfortunately not in Switzerland) and that would probably be the easiest option.
+
+Once you get confirmation that your domain is active, there is one thing you still need to do. Whatever your host is (e.g. Google, Hoststar, etc.) in your personal account there must be somewhere the possibility to edit the DNS properties. You should go to that page and in the Type A you should add any (or all) of the following GitHub pages addresses: __185.199.108.153__, __185.199.109.153__, __185.199.110.153__, __185.199.111.153__. Once you have done this, you can go back to your __settings/pages__ page on GitHub, add your custom domain and finally click __save__. Your website will be finally published under your customized domain name :)
+
+# Credits
+
+Of course huge credits to [rampatra](https://github.com/rampatra) for the big work which served as base for my website.
+
+This [article](https://medium.com/superkoders/ultimate-guide-to-google-maps-d86ad945636a) was very helpful to understand how to set up the Maps API.
+
+Feel free to contact me if you have any questions!
+
+
