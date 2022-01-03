@@ -36,7 +36,7 @@ When you're on the new sheet, you can go to __Extensions__--->__App Scripts__
 
 Once the new page is open, the __Code.gs__ window should be automatically open. There, you can replace the existing code with the following.
 
-```Genie
+```JavaScript
 var TO_ADDRESS = "youremailaddress"; // email to send the form data to
 
 /**
