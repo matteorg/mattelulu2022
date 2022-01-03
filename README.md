@@ -352,7 +352,7 @@ Once a month you'll get an invoice from Google amounting to plausibly 0$. You ca
 
 In the json scripts, you can just edit the following block with the coordinates of the place you'd like to be displayed. The coordinates are simple to recover. Once you select the place you want on Google Maps, the navigation bar will automatically include the coordinates. For example <https://www.google.com/maps/place/Cala+dei+Balcani/@40.0365908,18.4557733,17z/data=!3m1!4b1!4m5!3m4!1s0x13446b68dc0aae1f:0x712bcadc0421810a!8m2!3d40.0366714!4d18.4578939> this is the link to the location of our wedding, and as you can see, after the name theres __40.0365908,18.4557733__. These are exactly the latitude and longitude that you need :)
 
-```
+```JavaScript
 function initMap() {
     var location = {lat: 40.0365867, lng: 18.457962};
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -370,7 +370,7 @@ function initMap() {
 
 Finally, just go the html file where you want your map to be displayed, and at the end of the page, where you have the scripts, just add the following and replace __yourAPIkey__ with the key that your generated and stored in the steps above:
 
-```
+```HTML
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=yourAPIkey&callback=initMap"></script>
 ```
