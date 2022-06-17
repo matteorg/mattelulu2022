@@ -18,6 +18,7 @@ _See [mattelulu.ch](http://www.mattelulu.ch/) for a demo. Use invite code `to-be
    [GitHub Pages](https://pages.github.com/) to host and Google sheets (with the help of Google scripts) to store response
    data.
 10. Add __custom domain__ and increase the overall cost of your website to around 12$ per year.
+11. Add __upload pictures__ button for the guests for the wedding day
 
 # Getting Started
 1. `$ cd wedding-website` - go inside the project directory
@@ -392,6 +393,26 @@ To publish your website you can simply use [GitHub Pages](https://pages.github.c
 If you are instead willing to spend around 1 dollar/euro/chf per month to have a nicer domain name, you can just buy one. Buying a domain name is incredibly easy and quite quick (it may take up to 48 hours; in my case I had to wait aroun 15 hours after the purchase). Just google __buy domain__ and you'll find a ton of possible websites where you can purchase custom domains for very cheap fees. Google itself gives the possibility to buy custom domains (unfortunately not in Switzerland) and that would probably be the easiest option.
 
 Once you get confirmation that your domain is active, there is one thing you still need to do. Whatever your host is (e.g. Google, Hoststar, etc.) in your personal account there must be somewhere the possibility to edit the DNS properties. You should go to that page and in the Type A you should add any (or all) of the following GitHub pages addresses: __185.199.108.153__, __185.199.109.153__, __185.199.110.153__, __185.199.111.153__. Once you have done this, you can go back to your __settings/pages__ page on GitHub, add your custom domain and finally click __save__. Your website will be finally published under your customized domain name :)
+
+# Let Guests Upload Pictures
+
+For the big day, you can give your guests a chance to upload pictures to a destination of your choice. I use [DriveUploader](https://driveuploader.com/), a super user-friendly easy-to-use online tool to create an upload form which (contrary to links to Dropbox folders or Google Drive) does not require any sign in from the uploader's part.
+
+What you need: just a __Google Account__, which means you have a __Google Drive__ folder, where you (and others you give permission to) can upload any file up to your data allowance. If you don't have a Google account, well make one, because in general there are too many benefits you can obtain from Google (for frequent interesting tips, follow [Harsh](https://twitter.com/MakadiaHarsh) on Twitter). Yes, I'm a Google fan.
+
+Back to __driveuploader__, just go to the website and click on __create an uploader__.
+![Screen Shot 2022-06-17 at 22 27 51](https://user-images.githubusercontent.com/41672045/174396992-6aebb7d2-9ac5-44c8-a58a-88c467d783cc.png)
+
+First you'll be required to authorize __driveuploader__ to have access to your Google Drive. Then, you can actually create your first uploader form.
+
+![Screen Shot 2022-06-17 at 22 34 27](https://user-images.githubusercontent.com/41672045/174397696-1e13878c-e2a7-443b-9f97-66ca8dba021b.png)
+
+In this section you decide what you want your form to look like. Do uploader need to leave name or email? Can uploaders upload any tipe of file? Just explore the settings (also the advanced ones) and then customize the form according to your needs.
+
+For example, for a wedding occasion, I wouldn't ask to fill the form with name and email, and I would just allow uploaders to upload .jpg, .jpeg, .png, .gif and .mp4 files. This makes it easier also for them especially when they are using their mobile device, because once they would click on 'upload file', they would be automatically shown only photos and videos. Without specifying these formats, the uploader would have to navigate to the mobile phone folders to eventually reach the camera, which is admittedly a bit painful, especially if a guest is uploading photos during a party (same goes with providing name and email).
+
+__Remark 1__: make the link easy to reach. I added it as a button in the homepage of the website. Don't hide it somewhere where it would take long to find.
+__Remark 2__: the free plan of __driveuploader__ allows to generate forms that last only 24 hours, therefore make sure that on the wedding day, a couple of hours before the ceremony starts, you remember to update the website with a new uploader link that can be used through the entire event.
 
 # Credits
 
